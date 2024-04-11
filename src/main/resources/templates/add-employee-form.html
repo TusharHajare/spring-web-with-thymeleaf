@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <title>Add Employee</title>
+</head>
+<body>
+<div class="container">
+   <h2>Enter your data</h2>
+    <hr/>
+    <form th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+        <input type="text" th:field="*{name}" placeholder="Enter your name" class="form-control col-4 mb-4" />
+        <input type="text" th:field="*{email}" placeholder="Enter your email" class="form-control col-4 mb-4" />
+        <input type="text" th:field="*{sallary}" placeholder="Enter your sallary" class="form-control col-4 mb-4" />
+        <button class="btn btn-outline-primary" type="submit">Save</button>
+     <input type="hidden" th:field="*{id}" />
+    </form>
+    <hr/>
+   <a th:href="@{/list}">Back to list</a>
+</div>
+
+</body>
+</html>

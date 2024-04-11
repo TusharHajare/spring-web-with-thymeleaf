@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+
+<!-- This is a css link used for searching, sorting and paging-->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <title>Tushar Home Page</title>
+</head>
+<body>
+<!--https://www.bing.com/images/search?view=detailV2&ccid=7CPHPgd%2b&id=AADE4BD72F25A5D16348EA65BD0A5D3F28B3A2F7&thid=OIP.7CPHPgd-8U3Cyo6BQsaqBQHaEo&mediaurl=https%3a%2f%2fjooinn.com%2fimages%2fwhite-landscape-5.jpg&exph=1800&expw=2880&q=White+Landscape&simid=607999539401065085&FORM=IRPRST&ck=C1C5501E81C99365CB5204D10A59FDC3&selectedIndex=7-->
+
+<div
+        class="bg-image"
+        style="
+    background-image: url('https://www.desktopbackground.org/download/1366x768/2011/06/24/223976_white-nature-landscape-wallpapers-hd_2880x1800_h.jpg');    height: 100vh;">
+
+<div class="container">
+    <h1>Employee Management System</h1>
+    <a th:href="@{/addEmployeeForm}" class="btn btn-outline-primary mt-2 mb-2">Add new employee</a>
+    <hr/>
+    <table class="table table-striped table-bordered" id="tushar">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Sallary</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee: ${employees}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.sallary}"></td>
+            <td>
+                <a th:href="@{/showUpdateForm(employeeId=${employee.id})}" class="btn btn-info" >Update</a>
+                <a th:href="@{/deleteEmployee(employeeId=${employee.id})}" class="btn btn-danger ml-4">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+       </table>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
+<script>
+    $(document).ready(function()
+    {
+    $("#tushar").DataTable();
+    })
+</script>
+</body>
+</html>
